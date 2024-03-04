@@ -16,8 +16,12 @@ class ProjectsFactory extends Factory
      */
     public function definition(): array
     {
+
         return [
-            //
+            'name' => $this->faker->name,
+            'code' => $this->faker->uuid(),
+            'status' => $this->faker->randomElement([true, false]),
+            'user_id' => $this->faker->randomElement([1]),
         ];
     }
 }
