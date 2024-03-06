@@ -1,70 +1,42 @@
-<div class="py-4 px-3">
-    <div class="flex justify-between">
-        <h1 class="text-2xl font-bold">Projects</h1>
-        <div class="flex items-center gap-3">
+<div class="px-4">
 
-            <input wire:model="search" type="text" class="border border-gray-300 rounded-full px-4 py-2"
-                placeholder="Search...">
+    <input wire:model.live="search" type="text" class="border border-transparent rounded-full px-4 py-2 w-full"
+        placeholder="Search...">
 
-            <select wire:model="status" id="" class="border border-gray-300 rounded-full px-4 py-2">
-                <option value="">All</option>
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
-            </select>
+    <div class="mt-4 flex gap-4 flex-col min-h-[60vh] max-h-[60vh] overflow-y-auto">
+        <a href="#"
+            class="px-6 py-3 bg-gray-100 dark:bg-gray-900 hover:bg-white transition-all duration-300 rounded-xl">
+            <div class="flex justify-between items-center">
+                <div class="flex gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="28"
+                        height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M12 5l0 14" />
+                        <path d="M5 12l14 0" />
+                    </svg>
+                    <h6 class="text-lg font-semibold">Add new project</h6>
+                </div>
+            </div>
+        </a>
 
+        {{-- Add new --}}
 
-            <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded-full" wire:click="$refresh">Search</a>
-        </div>
-
-    </div>
-
-
-    <div class="mt-4">
-        <div class="flex items-center justify-end">
-
-        </div>
-    </div>
-
-    <div class="mt-4">
-        <table class="w-full">
-            <thead>
-                <tr>
-                    <th class="text-center">Name</th>
-                    <th class="text-center">Code</th>
-                    <th class="text-center">Status</th>
-                    <th class="text-center">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($projects as $project)
-                    <tr>
-                        <td>{{ $project->name }}</td>
-                        <td>
-                            <div class="flex justify-center items-center h-full">
-                                {{ $project->code }}
-                            </div>
-                        </td>
-                        <td>
-                            <div class="flex justify-center items-center h-full">
-                                <div
-                                    class="w-3 h-3 rounded-full {{ $project->status ? 'bg-green-600' : 'bg-red-600' }}">
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="flex justify-center items-center gap-3">
-                                <a href="#" class="text-blue-500">Edit</a>
-                                <a href="#" class="text-red-500 ml-2">Delete</a>
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-
-        <div class="mt-12">
-            {{ $projects->links() }}
-        </div>
+        @foreach ($projects as $project)
+            <a href="#" wire:transition wire:key="{{ $project->id }}"
+                class="px-6 py-3 bg-gray-100 dark:bg-gray-900 hover:bg-white transition-all duration-300 rounded-xl">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h1 class="text-lg font-semibold">{{ $project->name }}</h1>
+                        <p class="text-sm text-gray-500">{{ $project->code }}</p>
+                    </div>
+                    <div>
+                        <div class="w-3 h-3 rounded-full {{ $project->status ? 'bg-green-600' : 'bg-red-600' }}">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        @endforeach
 
     </div>
 </div>
