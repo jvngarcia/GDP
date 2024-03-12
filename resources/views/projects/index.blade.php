@@ -11,9 +11,7 @@
                 <livewire:projects.index />
 
                 <div class="col-span-2 bg-white rounded-lg p-6">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam non dolore, earum voluptate, omnis
-                    quidem, nostrum veritatis vitae harum necessitatibus ratione delectus cum veniam quisquam
-                    voluptatibus fugit aliquid asperiores mollitia.
+                    <livewire:projects.action-handler />
                 </div>
             </div>
         </div>
