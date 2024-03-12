@@ -6,27 +6,24 @@ use App\Models\Projects;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
+use Src\Projects\Application\ProjectFinder;
 
 class Index extends Component
 {
 
     use WithPagination, WithoutUrlPagination;
 
-    public $search;
+    public string $search = '';
+    private ProjectFinder $finder;
 
     public function searchData()
     {
-
-        return Projects::where('name', 'ilike', '%' . $this->search . '%')
-            ->orWhere('code', 'ilike', '%' . $this->search . '%')
-            ->get();
+        return $this->finder->__invoke($this->search);
     }
 
-
-
-
-    public function render()
+    public function render(ProjectFinder $finder)
     {
+        $this->finder = $finder;
 
         return view('livewire.projects.index', [
             'projects' => $this->searchData(),
