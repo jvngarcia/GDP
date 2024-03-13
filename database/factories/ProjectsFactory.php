@@ -20,6 +20,7 @@ class ProjectsFactory extends Factory
         return [
             'name' => $this->faker->name,
             'code' => $this->faker->uuid(),
+            'description' => $this->faker->text(),
             'status' => $this->faker->randomElement([true, false]),
             'user_id' => $this->faker->randomElement([1]),
         ];
