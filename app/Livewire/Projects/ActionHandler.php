@@ -9,11 +9,15 @@ use Src\Projects\Domain\ProjectId;
 class ActionHandler extends Component
 {
 
+    public bool $create;
+    public bool $update;
+
     #[On('projectCreator')]
     public function projectCreator()
     {
         // TODO: Implement projectCreator() method
-        return;
+        $this->create = true;
+        $this->update = false;
     }
 
     #[On('projectUpdater')]
@@ -21,6 +25,13 @@ class ActionHandler extends Component
     {
         // TODO: Implement projectUpdater() method
         return;
+    }
+
+    #[On('hideWindow')]
+    public function hideWindow()
+    {
+        $this->create = false;
+        $this->update = false;
     }
 
     public function render()
