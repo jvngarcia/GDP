@@ -16,17 +16,10 @@ class Index extends Component
     public string $search = '';
     private ProjectFinder $finder;
 
-    public function searchData()
-    {
-        return $this->finder->__invoke($this->search);
-    }
-
     public function render(ProjectFinder $finder)
     {
-        $this->finder = $finder;
-
         return view('livewire.projects.index', [
-            'projects' => $this->searchData(),
+            'projects' => $finder->__invoke($this->search),
         ]);
     }
 }
