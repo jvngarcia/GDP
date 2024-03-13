@@ -1,3 +1,10 @@
 <div>
-    Este va a ser el manejador de estados: Creación y Edición de Proyectos
+    <div id="create" class="{{ $create ? 'block' : 'hidden' }}">
+        <livewire:projects.create />
+    </div>
+
+    <div id="edit" class="{{ $update ? 'block' : 'hidden' }}">
+        Editar
+    </div>
+
 </div>
