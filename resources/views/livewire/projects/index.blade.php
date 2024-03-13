@@ -4,7 +4,7 @@
         placeholder="Search...">
 
     <div class="mt-4 flex gap-4 flex-col min-h-[60vh] max-h-[60vh] overflow-y-auto">
-        <a href="#"
+        <button type="button" wire:click="$dispatch('projectCreator')"
             class="px-6 py-3 bg-gray-100 dark:bg-gray-900 hover:bg-white transition-all duration-300 rounded-xl">
             <div class="flex justify-between items-center">
                 <div class="flex gap-2">
@@ -18,7 +18,7 @@
                     <h6 class="text-lg font-semibold">Add new project</h6>
                 </div>
             </div>
-        </a>
+        </button>
 
         {{-- Add new --}}
 
