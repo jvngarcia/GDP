@@ -15,16 +15,18 @@ class ActionHandler extends Component
     #[On('projectCreator')]
     public function projectCreator()
     {
-        // TODO: Implement projectCreator() method
         $this->create = true;
         $this->update = false;
     }
 
     #[On('projectUpdater')]
-    public function projectUpdater(ProjectId $id)
+    public function projectUpdater(int $id)
     {
-        // TODO: Implement projectUpdater() method
-        return;
+
+        $this->create = false;
+        $this->update = true;
+
+        $this->dispatch('projectShow', id: $id);
     }
 
     #[On('hideWindow')]
