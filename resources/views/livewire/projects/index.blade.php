@@ -23,10 +23,11 @@
         {{-- Add new --}}
 
         @foreach ($projects as $project)
-            <a href="#" wire:transition wire:key="{{ $project->id }}"
+            <button type="button" wire:transition wire:key="{{ $project->id }}"
+                wire:click="$dispatch('projectUpdater', {id: {{ $project->id }} })"
                 class="px-6 py-3 bg-gray-100 dark:bg-gray-900 hover:bg-white transition-all duration-300 rounded-xl">
                 <div class="flex justify-between items-center">
-                    <div>
+                    <div class="text-left">
                         <h1 class="text-lg font-semibold">{{ $project->name }}</h1>
                         <p class="text-sm text-gray-500">{{ $project->code }}</p>
                     </div>
@@ -35,7 +36,7 @@
                         </div>
                     </div>
                 </div>
-            </a>
+            </button>
         @endforeach
 
     </div>
